@@ -134,6 +134,19 @@ If 100 (or 10,000) Virtual Threads hit the lock:
 
 --- 
 
+## Step 4: deep dive : Data structure 
+We need a data structure for fast insert and peek/poll<br>
+1. **`PriorityQueue`** is one of the choice
+    **Internal Structure:**<br>
+    it act as Binary tree but store data as array.<br>
+    **Root:** Index 0 (always smallest)<br>
+    **Children of `i` : stored at `2i+1` and `2i-1`<br>
+    **Parent of `i`: stored at `(i-1)/2`<br>
+
+    
+
+## Step 5: Deep dive : Execution & Scaling
+## Step 6 : Fault Tolerance & Reliability
 
     
    
