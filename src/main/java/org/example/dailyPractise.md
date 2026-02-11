@@ -102,18 +102,18 @@
 
 # DAY 7
 
-- [ ] **Two Pointers:** 3Sum (https://leetcode.com/problems/3sum/)
-- [ ] **Sliding window:** Longest Substring without Repeating characters (https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-- [ ] **Fast-slow:** Middle of linked list (https://leetcode.com/problems/middle-of-the-linked-list/)
-- [ ] **Binary Search:** find Peak Element (https://leetcode.com/problems/find-peak-element/)
-- [ ] **Perfix Sum:** Subarray Sum Equals K (https://leetcode.com/problems/subarray-sum-equals-k/)
-- [ ] **Monotonic Stack:** Next Greater Element (https://leetcode.com/problems/next-greater-element-i/)
-- [ ] **HashMap:** Group Anagrams (https://leetcode.com/problems/group-anagrams/)
-- [ ] **Graph BFS:** Number of Islands (https://leetcode.com/problems/number-of-islands/)
-- [ ] **Tree BFS:** Binary Tree Level Order Traversal (https://leetcode.com/problems/binary-tree-level-order-traversal/)
-- [ ] **Tree DFS:** Path Sum II (https://leetcode.com/problems/path-sum-ii)
-- [ ] **Dynamic Programming:** House Robber (https://leetcode.com/problems/house-robber/)\
-- [ ] **Backtracking:** Subsets (https://leetcode.com/problems/subsets/)
+- [ ] **Two Pointers:** Move Zeros (https://leetcode.com/problems/move-zeros/)
+- [ ] **Sliding window:** sliding window maximum (https://leetcode.com/problems/sliding-window-maximum/)
+- [ ] **Fast-slow:** Find duplicate number (https://leetcode.com/problems/find-the-duplicate-number/)
+- [ ] **Binary Search:** Capacity to Ship packages (https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
+- [ ] **Perfix Sum:** Maximum size subarray sum =k (https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/)
+- [ ] **Monotonic Stack:** Minimum add to Make parenthesis (https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/)
+- [ ] **HashMap:** Contains Duplicate II (https://leetcode.com/problems/contains-duplicate-ii/)
+- [ ] **Graph BFS:** Word Ladder (https://leetcode.com/problems/word-ladder/)
+- [ ] **Tree BFS:** Maximum Level Sum of a Binary Tree (https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/)
+- [ ] **Tree DFS:** Count Good Nodes in Binary Tree (https://leetcode.com/problems/count-good-nodes-in-binary-tree/)
+- [ ] **Dynamic Programming:** Decode Ways (https://leetcode.com/problems/decode-ways/)
+- [ ] **Backtracking:** Letter Combinations of a phone number (https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
 
 
 
