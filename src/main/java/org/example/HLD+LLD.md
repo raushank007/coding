@@ -144,3 +144,107 @@ Mention:
 ## DAY 4
 - [ ] HLD : Twitter Feed System
 - [ ] LLD : Movie Ticket Booking System
+
+## DAY 5
+- [ ] HLD : Uber/Lyft System
+- [ ] LLD : Logging framework
+
+## DAY 6
+- [ ] HLD : YouTube/Video Streaming
+- [ ] LLD : Airline Reservation System
+
+## DAY 7
+- [ ] HLD : Notification System
+- [ ] LLD : Vending Machine
+
+## DAY 8
+- [ ] HLD : Amazon/Flipkart
+- [ ] LLD : Snake & Ladder
+
+## DAY 9
+- [ ] HLD : Payment Gateway(Razorpay/Stripe)
+- [ ] LLD : Chess Game/Tic-Tac-Toe
+
+## DAY 10
+- [ ] HLD : Google Drive
+- [ ] LLD : ATM Machine
+
+## DAY 11
+- [ ] HLD : Zoom/Video Conferencing
+- [ ] LLD : Hotel Booking System
+
+## DAY 12
+- [ ] HLD : Real-Time Locating Tracking
+- [ ] LLD : Splitwise
+
+## DAY 13
+- [ ] HLD : News Feed System
+- [ ] LLD : Inventory Management
+
+## DAY 14
+- [ ] HLD : Distributed Cache(Redis)
+- [ ] LLD : Cab/Taxi Management System
+
+## DAY 15
+- [ ] HLD : Search Autocomplete
+- [ ] LLD : In-Memory key value store
+
+## DAY 16
+- [ ] HLD : Messaging Queue(Kafka Lite)
+- [ ] LLD : File System Design
+
+## DAY 17
+- [ ] HLD : Email Service(Gmail Lite)
+- [ ] LLD : Logging Rate Limiter
+
+## DAY 18
+- [ ] HLD : Distributed Locking System
+- [ ] LLD : Cricbuzz Scoreboard System
+
+## DAY 19 
+- [ ] HLD : URL Crawling System
+- [ ] LLD : Bowling Alley System
+
+## DAY 20 
+- [ ] HLD : Zoom Whiteboard
+- [ ] LLD : Bidding / Auction System
+
+## DAY 21
+- [ ] HLD : Food Delivery System(zomato/swiggy)
+- [ ] LLD : Music Player Design
+
+## DAY 22
+- [ ] HLD : Reddit/Discussion Forum
+- [ ] LLD : Cricket Dashboard Model
+
+## DAY 23
+- [ ] HLD : Ride Matching Algorithm(Uber)
+- [ ] LLD : Restaurant Reservation System
+
+## DAY 24
+- [ ] HLD : Fraud Detection System
+- [ ] LLD : Elevator System(Hard Variant)
+
+## DAY 25
+- [ ] HLD : Multi-Region Deployment Strategy
+- [ ] LLD : Digital Wallet(PhonePe/Paytm)
+
+## DAY 26 
+- [ ] HLD : Food Recommendation Engine
+- [ ] LLD : Documentation Versioning System
+
+## DAY 27
+- [ ] HLD : IoT Device Control System
+- [ ] LLD : Payment Retry Service
+
+## DAY 28
+- [ ] HLD : Multi-Tenant SaaS Architecture
+- [ ] LLD : Order Management System
+
+## DAY 29
+- [ ] HLD : Google Maps(Route service)
+- [ ] LLD : Car Rental System
+
+## DAY 30 
+- [ ] HLD : Design Netflix
+- [ ] LLD : Message Rate Limiter(Token Bucket)
