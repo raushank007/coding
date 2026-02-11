@@ -84,6 +84,25 @@ class solution {
 ### optimise approach
 **Sliding window**
 store even and odd count at evey index , using hashmap<index, Pair> and hashset for uniqueness check
-and then use sliding window to find the max
+and then use sliding window to find the max<br>
+
+
+
+### create a DS for this 
+1. Requirement gathering <br>
+**Functional Requirement**<br>
+a. count the **distinct** even and **distinct** odd in a subarray<br>
+b. if both is equal then **balanced subarray**, return among those balanced subarray return the length of longest subarray<br>
+**Non-Functional Requirement**<br>
+a. at every index getting the distinct count of even and odd of a subarray should be know <br>
+
+
+#### API interface for DS / public methods for DS
+1. HashMap<Index,Pair> givenEvenOdd(nums) : it will give the distinct even and odd count of the every index
+2. 
+
+
+
+
 
 
