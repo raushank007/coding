@@ -12,9 +12,9 @@
 
 # DAY 1 - Full 12 pattern Coverage
 
-- [ ] **Two Pointers:** 3Sum (https://leetcode.com/problems/3sum/)
-- [ ] **Sliding window:** Longest Substring without Repeating characters (https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-- [ ] **Fast-slow:** Middle of linked list (https://leetcode.com/problems/middle-of-the-linked-list/)
+- [X] **Two Pointers:** 3Sum (https://leetcode.com/problems/3sum/)
+- [X] **Sliding window:** Longest Substring without Repeating characters (https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+- [X] **Fast-slow:** Middle of linked list (https://leetcode.com/problems/middle-of-the-linked-list/)
 - [ ] **Binary Search:** find Peak Element (https://leetcode.com/problems/find-peak-element/)
 - [ ] **Perfix Sum:** Subarray Sum Equals K (https://leetcode.com/problems/subarray-sum-equals-k/)
 - [ ] **Monotonic Stack:** Next Greater Element (https://leetcode.com/problems/next-greater-element-i/)
