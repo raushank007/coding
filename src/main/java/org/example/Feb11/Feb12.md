@@ -377,3 +377,110 @@ mid => low:0, high = 6 => 3 -> need to check for side
     return -1;
 }
 ```
+
+
+
+
+### Prefix Sum: Subarray Sum Equals K (https://leetcode.com/problems/subarray-sum-equals-k/)
+
+> Rephrase the questions
+
+all possible subarrays and count of total subarray is k<br>
+subarray should not be empty
+
+> Data Structure
+
+Array
+
+>Pattern Detection  
+
+Prefix sum
+
+>Brute force approach
+
+pick i=0, loop j=0 to 2
+        j=0, sum=1
+        J=1, sum=2
+        j=2, sum =3 -> count =1
+
+pick i=1 , loop j=1 to 2
+        j=1, sum=1
+        j=2, sum=2 -> count =2
+
+pick i=2 , loop j=2 to 2
+        j=2 ,sum 1 
+
+```java
+    int count=0;
+    for(int i=0;i<n;i++){
+        int sum=0;
+        for(int j=i;j<n;j++){
+            sum +=num[j];
+            if(sum==k) count++;
+        }
+        
+```
+
+>why Optimize?
+
+as it is o(2^n) -> exponential so need to modified it<br>
+try to modified it 
+
+>Optimal Pattern-approach (Prefix sum)
+
+
+[1,2,3] , k =3
+
+[1,3,6]
+
+map => []
+prefixSum=0
+map => [(0,1)]
+
+count=0;
+
+pick i=0
+prefixSum =1;
+int remove = 1-3 = -2
+
+map => [(0,1),(1,0)]
+
+pick i=1
+prefixSum = 3
+int remove = 3-3 =0
+
+map.containsKey(0) -> count=count+1 = count=1
+map=>[(0,1),(1,0),(3,1)]
+
+pick i=2
+prefixSum = 6
+int remove = 6-3 = 3
+map.containsKey(3) -> count=2
+map=>[(0,1),(1,1),(3,1),(6,1)]
+
+```java
+    import java.util.HashMap;
+
+public int subArraySum(int[] nums, int k) {
+    HashMap<Integer, Integer> map = new HashMap<>();
+    int prefixSum=0;
+    map.put(0,1);
+    int count=0;
+    for(int i=0;i<n;i++){
+        prefixSum += nums[i];
+        int remove = prefixSum-k;
+        if(map.containsKey(remove)){
+            count +=map.get(remove);
+        }
+        map.put(prefixSum,map.getOrDefault(prefixSum,0)+1);
+        
+    }
+    return count;
+}
+```
+
+>Intuition<br>
+> The problem asks for the number of continous subarrays whose sum equals k. <br>
+> if the cumulative sum up to index i is currentSum, and we want to find a subarray ending at i with sum k, we need to check if there exists a previous prefix sum (at some index j<i) such that : <br>currentSum-PreviousSum=k <br>, Rearranging this, we look for<br> PreviousSum = current-k<br>
+> By Storing the frequency of all previous sums , we have seen so far in HashMap, we can instantly check how many times we have encountered the required currentSum -k.
+
