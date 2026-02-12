@@ -13,6 +13,31 @@ public class Feb12 {
         //1 . 3 Sum - Two pointer
         List<List<Integer>> OptimizedThreeSum = threeSumOptimized(arr);
         System.out.println("OptimizedThreeSum: "+ OptimizedThreeSum);
+
+        String s = "abcabcbb";
+        int longestSubStringWithoutRepeating = slidingWindowApproach(s);
+        System.out.println("Longest substring without repeating: "+longestSubStringWithoutRepeating);
+    }
+
+    private static int slidingWindowApproach(String s) {
+
+            int l = 0;
+            int r;
+            int max=0;
+            HashSet<Character> set = new HashSet<>();
+            for(r=0;r<s.length();r++){
+                    while(set.contains(s.charAt(r))){
+                        set.remove(s.charAt(l));
+                        l++;
+                    }
+
+                    set.add(s.charAt(r));
+                    max = Math.max(max, r-l+1);
+
+            }
+
+            return max;
+
     }
 
     private static List<List<Integer>> threeSumOptimized(int[] arr) {
