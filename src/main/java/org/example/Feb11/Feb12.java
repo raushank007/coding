@@ -1,7 +1,18 @@
 package org.example.Feb11;
 
 import java.util.*;
-
+class ListNode{
+    int val;
+    ListNode next;
+    ListNode(){}
+    ListNode(int val){
+        this.val = val;
+    }
+    ListNode(int val, ListNode next){
+        this.val=val;
+        this.next=next;
+    }
+}
 public class Feb12 {
     public static void main(String[] args){
         int[] arr = {-1,0,1,2,-1,-4};
@@ -17,6 +28,62 @@ public class Feb12 {
         String s = "abcabcbb";
         int longestSubStringWithoutRepeating = slidingWindowApproach(s);
         System.out.println("Longest substring without repeating: "+longestSubStringWithoutRepeating);
+
+        /*
+         create linked list
+         */
+        int[] linkedListData = {1,2,3,4,5,6,7};
+        ListNode dummy =new ListNode();
+        ListNode head = dummy;
+        for(int i=0;i<linkedListData.length;i++){
+            ListNode  temp = new ListNode(linkedListData[i]);
+            dummy.next = temp;
+            dummy=dummy.next;
+        }
+        ListNode middleBruteForce = middleNodeBruteForce(head.next);
+        System.out.println("middle of the linked list:" +middleBruteForce);
+        ListNode middleFastAndSlow =middleNode(head.next);
+        System.out.println("middle of the linked list:"+middleFastAndSlow);
+
+    }
+
+    /*
+        Brute force : calculating the total length and find the n/2
+     */
+    private static ListNode middleNodeBruteForce(ListNode head){
+        int length = evaluateLength(head);
+        int middle = length/2;
+        int k=0;
+        while(k<middle){
+            head=head.next;
+            k++;
+        }
+        return head;
+    }
+    private static int evaluateLength(ListNode node){
+        int length=0;
+        while(node!=null){
+            node=node.next;
+            length++;
+        }
+        return length;
+    }
+
+
+    /*
+            remove the length calculation to reduce the iterations on linkedlist
+            Fast and slow pointer approach
+     */
+
+    public static  ListNode middleNode(ListNode node){
+        ListNode slow = node;
+        ListNode fast = node;
+
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
     }
 
     private static int slidingWindowApproach(String s) {

@@ -188,3 +188,114 @@ remve l=1 character  set = [k,e]
 last =(max , hasset.size())
 
 >Explain time + space complexity 
+
+
+
+### 3 . Middle of linked list (https://leetcode.com/problems/middle-of-the-linked-list/)
+
+>Read the problem , Rephrase it<br>
+
+>Given the head of a single linked list, return the middle node of the linked list, if two middle nodes then return second middle node
+
+>Identify the data structure (Array, String, Tree Graph)<br>
+
+Linked List 
+>Detect the pattern<br>
+
+Fast and slow pointer
+>Think brute force first<br>
+
+find the length of the linked list , 
+the node at length/2 
+Time complexity : O(n) + O(n) 
+>Optimize using the relevant pattern<br>
+
+Optimize it find the middle without calculating the total length of the linked list 
+move one pointer to one node and other pointer two node 
+
+>Walk through small examples manually<br>
+
+1->2->3->4->5
+slow=1
+fast=1
+
+2nd iteration
+slow=2
+fast=3
+
+3rd iteration
+slow =3
+fast = 5
+
+4th iteration 
+fast.next is null then return the slow 
+
+1->2->3->4->5->6
+
+1st iteration
+slow=1
+fast=1
+
+2nd iteration
+slow=2
+fast=3
+
+3rd iteration
+slow=3
+fast=5
+
+4th iteration
+slow =4
+fast.next !=null and fast!=null -> fast =null
+
+5th iteration
+fast is null , return slow 
+>List edge cases<br>
+
+if only head=null or head.next is null return head
+>Write clean code<br>
+
+```java
+    /*
+        Brute force : calculating the total length and find the n/2 
+     */
+    private ListNode middleNodeBruteForce(ListNode node){
+        int length = evaluateLength(head);
+        int middle = length/2;
+        int k=0;
+        while(k<middle){
+            head=head.next;
+            k++;
+        }
+        return head;
+    }
+    private int evaluateLength(ListNode node){
+       int length=0;
+       while(node!=null){
+           node=node.next;
+           length++;
+       }
+       return length;
+    }
+    
+    
+    /*
+            remove the length calculation to reduce the iterations on linkedlist
+            Fast and slow pointer approach
+     */
+
+    public ListNode middleNode(ListNode node){
+        ListNode slow = node;
+        ListNode fast = node;
+        
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+```
+>Dry run the code with multiple examples<br>
+
+
+>Explain time + space complexity
