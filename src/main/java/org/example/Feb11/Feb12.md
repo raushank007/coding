@@ -299,3 +299,81 @@ if only head=null or head.next is null return head
 
 
 >Explain time + space complexity
+
+
+### 4. find Peak Element (https://leetcode.com/problems/find-peak-element/)
+
+> Problem Rephrase
+
+peak element -> gerater than left and right adjacent element  [1,3,2] -> 3 is peak element , order should not be change<br>
+0-indexed integer array , means need to return actual index as return from array
+if there is more than 1 peak return any peak index
+
+> Data Structure
+ 
+Array
+
+> Pattern detection
+
+Array -> constraints no sorting, always need to check the its neighbour, always need to check three numbers 
+3 window size -> may be sliding window
+
+> Brute Force approach 
+
+```java
+    public int findPeakElement(int[] num){
+    int n = nums.length;
+    if(n==1) return 1;
+    if(n==2) {
+        if(num[1]>num[0]) return 1;
+        else return 0;
+    }
+    
+    for(int i=0;i<n-2;i++){
+        if(num[i]<num[i+1] && num[i+1]>num[i+2]) return i+1;
+    }
+    //handle edge case
+    if(num[0]>num[1]) return 0;
+    if(num[n-2]<num[n-1]) return n-1;
+    return -1;
+    
+}
+```
+
+Time = O(n)
+space = O(1)
+
+> As mentioned in the question that time complexity should be O(log n) time
+
+log n one array -> binary search
+
+>Optimal Pattern-based Approach(Binary Search)
+
+[1, 2, 3, 1]<br>
+find middle -> low = 0, high =3 , mid = 3+1/2 = 2<br>
+index 2 = mid+1 and mid-1 compare find peak return peak
+if not then ?
+
+[1 ,2, 1, 3, 5, 6, 4]<br>
+mid => low:0, high = 6 => 3 -> need to check for side 
+
+```java
+    public int findPeakElement(int[] nums){
+    if(nums.length==1) return 0;
+    int n = nums.length;
+    
+    if(nums[0]>nums[1]) return 0;
+    if(nums[n-1]>nums[n-2]) return n-1;
+    
+    int start=1;
+    int end=n-2;
+    
+    while(start<=end){
+        int mid = start+(end-start)/2;
+        if(nums[mid]>nums[mid-1] && nums[mid]<nums[mid+1]) return mid;
+        else if(nums[mid]<mums[mid-1]) end = mid-1;
+        else if (nums[mid]<nums[mid+1]) start = mid+1;
+    }
+    return -1;
+}
+```
