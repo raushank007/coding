@@ -122,3 +122,67 @@ class solution{
 }
 ```
 
+
+#### Problem 1 : Group Anagrams (https://leetcode.com/problems/group-anagrams/)
+
+> Rephrase the problem
+
+group by anagram 
+
+> Data Structure
+
+HashMap 
+
+> Brute Force 
+
+
+at each index find the stored of word and put in hasmap <key , List<String>>
+
+sorting will take order 26 and then store each number O(26*n);
+
+```java
+
+import java.util.ArrayList;
+import java.util.Map;
+
+class solution {
+    public List<List<String>> groupingAnagrams(String[] strs) {
+        Map<String, List<String>> map = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            String temp = stored(strs[i]);
+            if (map.containsKey(temp)) {
+                map.get(temp).add(strs[i]);
+            } else {
+                List<String> str = new ArrayList<>();
+                str.add(strs[i]);
+                map.put(temp, str);
+            }
+        }
+
+        List<List<String>> result = new ArrayList<>();
+        for (Map.Entry<String,List<String>> entry : map.entrySet() ){
+            result.add(new ArrayList<>(entry.getValue()));
+        }
+        return result;
+    }
+    
+    private String stored(String str){
+        int n = str.length();
+        StringBuilder sb = new StringBuilder();
+        int[] freq = new int[26];
+        for(int i=0;i<n;i++){
+            freq[str.charAt(i)-'a']++;
+        }
+        for(int i=0;i<26;i++){
+            if(freq[i]!=0){
+                while(freq[i]--!=0){
+                    sb.append((char)(i+'a'));
+                }
+            }
+        }
+        return sb.toString();
+    }
+}
+```
+
