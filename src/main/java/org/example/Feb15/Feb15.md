@@ -250,6 +250,55 @@ class Solution {
 }
 ```
 
+#### Binary Tree Level Order Traversal (https://leetcode.com/problems/binary-tree-level-order-traversal/)
 
+```java
+    class solution{
+    public List<List<Integer>> levelOrderTraversal(TreeNode root){
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        while(!q.isEmpty()){
+            int n = q.size();
+            List<Integer> level = new ArrayList<>();
+            for(int i=0;i<n;i++){
+                TreeNode curr = q.poll();
+                leve.add(curr.val);
+                if(curr.left!=null) q.offer(curr.left);
+                if(curr.right!=null) q.offer(curr.right);
+            }
+            result.add(level);
+        }
+        return result;
+    }
+}
+```
+>DFS
+
+```java
+    import java.util.ArrayList;
+
+class solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        dfs(root,0,result);
+        return result;
+    }
+    
+    private void dfs(TreeNode root, int level, List<List<Integer>> result){
+        if(root==null) return;
+        
+        if(result.size()==level){
+            List<Integer> ans = new ArrayList<>();
+            ans.add(root.val);
+            result.add(ans);
+        }else{
+            result.get(level).add(root.val);
+        }
+        dfs(root.left,level+1,result);
+        dfs(root.right,level+1,result);
+    }
+}
+```
 
 
