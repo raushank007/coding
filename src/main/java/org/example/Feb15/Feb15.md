@@ -186,3 +186,70 @@ class solution {
 }
 ```
 
+#### Problem 3 : Path Sum II (https://leetcode.com/problems/path-sum-ii/)
+
+> Rephrase Problem
+
+1. Give `root` and `targetSum`
+2. find `root-to-leaf` paths whose sum is `targetSum` 
+3. return the list of the node `values`
+
+>Data Structure
+
+List<Integer> as it is return <br>
+for operation TreeNode class (Binary Tree)
+
+>Pattern Recognition
+
+traverse the from root to leaf while getting value <br>
+node->left-right -> pre-order traversal
+
+> Brute Force
+
+```mermaid
+    graph TD
+        A((5:sum=5)) --> B((4: sum =9)) 
+        B-->C((11:sum=20))
+        C-->D((7:sum=27))
+        C-->E((2:sum=22))
+        A-->F((8:sum=13))
+        F-->G((13:sum=26))
+        F-->H((4:sum=17))
+        H-->I((5:sum=22))
+        H-->J((1:sum=18))
+```
+
+```java
+    import java.util.ArrayList;
+
+class TreeNode;
+
+class Solution {
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        List<Integer> ans = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        dfs(root,targetSum,ans,result,0);
+        return result;
+    }
+    
+    private void dfs(TreeNode root, int target, List<Integer> ans, List<List<Integer>> result,int sum){
+        if(root==null) return;
+        sum +=root.val;
+        ans.add(root.val);
+        if(root.left==null && root.right==null){
+            if(target==sum){
+                result.add(new ArrayList<>(ans));
+            }
+            return;
+        }
+        dfs(root.left,target,ans,result,sum);
+        dfs(root.right,target,ans,result,sum);
+        ans.remove(ans.size()-1);
+    }
+    
+}
+```
+
+
+
+
