@@ -17,11 +17,11 @@
 - [X] **Fast-slow:** Middle of linked list (https://leetcode.com/problems/middle-of-the-linked-list/)
 - [X] **Binary Search:** find Peak Element (https://leetcode.com/problems/find-peak-element/)
 - [X] **Perfix Sum:** Subarray Sum Equals K (https://leetcode.com/problems/subarray-sum-equals-k/)
-- [ ] **Monotonic Stack:** Next Greater Element (https://leetcode.com/problems/next-greater-element-i/)
-- [ ] **HashMap:** Group Anagrams (https://leetcode.com/problems/group-anagrams/)
+- [X] **Monotonic Stack:** Next Greater Element (https://leetcode.com/problems/next-greater-element-i/)
+- [X] **HashMap:** Group Anagrams (https://leetcode.com/problems/group-anagrams/)
 - [ ] **Graph BFS:** Number of Islands (https://leetcode.com/problems/number-of-islands/)
-- [ ] **Tree BFS:** Binary Tree Level Order Traversal (https://leetcode.com/problems/binary-tree-level-order-traversal/)
-- [ ] **Tree DFS:** Path Sum II (https://leetcode.com/problems/path-sum-ii)
+- [X] **Tree BFS:**Binary Tree Level Order Traversal (https://leetcode.com/problems/binary-tree-level-order-traversal/)
+- [X] **Tree DFS:** Path Sum II (https://leetcode.com/problems/path-sum-ii)
 - [ ] **Dynamic Programming:** House Robber (https://leetcode.com/problems/house-robber/)\
 - [ ] **Backtracking:** Subsets (https://leetcode.com/problems/subsets/)
 
