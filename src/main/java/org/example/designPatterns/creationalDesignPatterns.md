@@ -194,3 +194,30 @@ class  Singleton{
 1. How to break Singleton?(Reflection, Serialization)
 2. how to make Singleton thread-safe?
 3. When NOT to use Singleton?
+
+
+# Creational Design Pattern
+
+>Pattern related to class and object composition.
+
+## Adaptor Pattern
+
+### Definition
+
+Convert one interface to another
+
+### Real-World example:
+Charger adapter -> USB to Type-C
+
+```java
+class LegacyPrinter{
+    void printOld(){System.out.println("Old Printer");}
+}
+
+interface NewPrinter {void print();}
+
+class PrinterAdapter implements NewPrinter{
+    private LegacyPrinter lp = new LeagacyPrinter();
+    public void print(){lp.printOld();}
+}
+```
