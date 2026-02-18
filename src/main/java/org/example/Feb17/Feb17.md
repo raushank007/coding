@@ -222,9 +222,13 @@ f(0) called (val:1) ans=[]
                    |__ Include 3 : ans :[2,3] -> called f(3)
                        |__ f(3) called -> base case -> Result :[[1,2,3],[1,2],[1,3],[1],[2,3]]
                    |__ Exclude 3 : ans [2] -> called f(3)
-                       |__ f(3) called -> base case -> Result : [[1,2,3],[1,2],[1,3],[1],[2,3],[3]]
-       |__ Exclude 2 : ans [] -> call f(3)
-           |__ f(3) called -> base case -> Result : [[1,2,3],[1,2],[1,3],[1],[2,3],[2],[3],[]]                          
+                       |__ f(3) called -> base case -> Result : [[1,2,3],[1,2],[1,3],[1],[2,3],[2]]
+       |__ Exclude 2 : ans [] -> call f(2)
+           |__ f(2) called (val:3)
+                |__ Include 3 : ans [3] -> called f(3)
+                     |__ f(3) called -> base case -> Result :  [[1,2,3],[1,2],[1,3],[1],[2,3],[2],[3]]
+                |__ Exclude 3 : ans :[] -> called f(3)
+                    |__ f(3) called -> base case -> Result : [[1,2,3],[1,2],[1,3],[1],[2,3],[2],[3],[]]                              
                                                                                                                                                              
 ```
 
