@@ -69,3 +69,77 @@ We want to keep the taller height between left and right because there is a poss
     }
 }
 ```
+
+
+### Problem 2 : **Sliding window:** Minimum Window Substring (https://leetcode.com/problems/minimum-window-substring/)
+
+> Rephrase this problem
+
+given two strings s and t lengths m and n  -> need to find a substring in s that have all the character of t, if not return empty
+
+>Data Structure
+
+Array
+
+> Pattern recognition 
+
+it is substring of size , variable window size -> sliding window
+
+> Brute Force
+
+1. find all possible combination of substring 
+2. and then each check that which substring contains t 
+3. from those substring return the minum length of the substring
+
+```java
+    class solution{
+    public String minWindow(String s, String t) {
+        int n = s.length();
+        int m = t.length();
+
+        if (m > n) return "";
+
+        if (s.equals(t)) return s;
+        int min = Integer.MAX_VALUE;
+        String str = "";
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                String temp = s.substring(i, j);
+                if (isAllCharTPresent(temp, t)) {
+                    if (min > temp.length()) {
+                        str = temp;
+                        min = temp.length();
+                    }
+                }
+            }
+        }
+        return str;
+    }
+    
+        private boolean isAllCharTPresent(String temp, String t){
+            int[] freq = new int[1000];
+            int n = temp.length();
+            int m = t.length();
+            if(t>n) return false;
+            
+            for(int i=0;i<m;i++){
+                freq[t.charAt(i)]++;
+            }
+
+            for(int i=0;i<n;i++){
+                freq[temp.charAt(i)]--;
+            }
+            
+            for(int i=0;i<m;i++){
+                if(freq[t.charAt(i)]>0) return false;
+            }
+            
+            return true;
+            
+            for(int i=0;i<1000;i++){
+                if(freq[i]!=0) retur
+            }
+        }
+    }
+}
+```
