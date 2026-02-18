@@ -19,11 +19,11 @@
 - [X] **Perfix Sum:** Subarray Sum Equals K (https://leetcode.com/problems/subarray-sum-equals-k/)
 - [X] **Monotonic Stack:** Next Greater Element (https://leetcode.com/problems/next-greater-element-i/)
 - [X] **HashMap:** Group Anagrams (https://leetcode.com/problems/group-anagrams/)
-- [ ] **Graph BFS:** Number of Islands (https://leetcode.com/problems/number-of-islands/)
+- [X] **Graph BFS:** Number of Islands (https://leetcode.com/problems/number-of-islands/)
 - [X] **Tree BFS:**Binary Tree Level Order Traversal (https://leetcode.com/problems/binary-tree-level-order-traversal/)
 - [X] **Tree DFS:** Path Sum II (https://leetcode.com/problems/path-sum-ii)
 - [X] **Dynamic Programming:** House Robber (https://leetcode.com/problems/house-robber/)\
-- [ ] **Backtracking:** Subsets (https://leetcode.com/problems/subsets/)
+- [X] **Backtracking:** Subsets (https://leetcode.com/problems/subsets/)
 
 # DAY 2 - Full 12 pattern Coverage
 
