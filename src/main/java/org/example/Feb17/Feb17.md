@@ -220,7 +220,7 @@ f(0) called (val:1) ans=[]
         |__ Include 2 : ans [2] -> call f(2)
             |__ f(2) called (val:3)
                    |__ Include 3 : ans :[2,3] -> called f(3)
-                       |__ f(3) called -> base case -> Result :[[1,2,3],[1,2],[1,3],[1],[2,3]]
+                       |__ f(3) called -> base case -> Result :[[1,2,3],[1,2][1,3],[1],[2,3]]
                    |__ Exclude 3 : ans [2] -> called f(3)
                        |__ f(3) called -> base case -> Result : [[1,2,3],[1,2],[1,3],[1],[2,3],[2]]
        |__ Exclude 2 : ans [] -> call f(2)
@@ -232,3 +232,108 @@ f(0) called (val:1) ans=[]
                                                                                                                                                              
 ```
 
+### Problem 3 : Number of Islands (https://leetcode.com/problems/number-of-islands/)
+
+> Rephrase the questions
+
+`1`  represent land and `0` as water<br>
+and all connected 1's  check its horizontal and vertical is water then count as island<br>
+
+> Data Structure
+
+Graph as connected islands we need to find
+
+> Pattern recoginition : 
+
+Graph BFS
+
+> Brute Force 
+
+1. create a `adjList` 
+2. create a visited 2D-array
+3. find the connected 1's till horiztal or vertial is one 
+4. iterate through full matrix (mXn) and check for every unvisited 
+5. count such connected groups of one -> queue is empty -> count=count+1;
+
+#### Example
+
+```text
+
+grid =
+["1","1","0"]
+["1","1","0"]
+["0","0","1"]
+
+Output : 2
+
+
+visited[][] => mXn
+count=0;
+pick [0][0] 
+|__ visited[0][0]=1 , call f([0][0])
+|                      |__ f([0][0]) called (val:="1")
+|                      |__ Queue[0,0] ,
+|                      |__ while (!q.isEmpty())
+|                           |__ poll() [0,0] ->heck in all four directions -> up, down , left , right , which ever is in range and have one add it in q and marked added one as visited 
+|                           |__ q=[(0,1),(1,0)
+|                      |__ q is not empty()
+|                           |__ poll() [0,1] -> check in all four direction ->up, down, left ,right, (not visited , value ="1") make it as visited and add it in queue
+|                           |__ q=[(1,0),(1,1)]
+|                      |__ q is not empty()
+|                           |_ q.poll() [1,0] -> check in all four direction -> (not visited, value ="1") not find 
+|                      |__ q =[1,1] , q is not empty
+|                           |__ q.poll() [1,1] -> check in four direction -> not able to find any
+|                      |__ q =[] , q is empty
+| count=1, iterated til novisited and value ="1" , visited[2,2] -call f([2,2])
+|                                                                 |__ f([2,2]) called val:"1"
+|                                                                 |__ q=[2,2] 
+|                                                                 |__ while q .is not empty()
+|                                                                      |__ q. poll*( (2,2) check in all directions , not find 
+|                                                                 |__ q .is empty()
+| count =1 +1 ; =2 ans;
+```
+
+```java
+    class solution{
+    public int numsIslands(char[][] grid){
+        int row = grid.length;
+        int col = gird[0].length;
+        
+        int[][] visited = new int[row][col];
+        
+        int count=0;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(visited[i][j]==0 && grid[i][j]=='1'){
+                    visited[i][j]=1;
+                    bfs(i,j,row,col,grid,visited);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    
+    private void bfs(int i, int j, int row, int col, int[][] gird, int[][] visited){
+        Queue<int[]> q = new LinkedList<>();
+        q.offer(new int[]{i,j});
+        
+        while(!q.isEmpty()){
+            int[] curr = q.poll();
+            int[][] directions = new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
+            for(int[] dir : directions){
+                int newRow = curr[0] + dir[0];
+                int newCol = curr[1] + dir[1];
+                if(newRow<row && newRow>=0 && 
+                        newCol<col && newCol>=0 && 
+                        visited[newRow][newCol]==0 && 
+                        grid[newRow][newCol]=='1'){
+                    visited[newRow][newCol]=1;
+                    q.offer(new int[]{newRow,newCol});
+                }
+                        
+            }
+        }
+    }
+}
+```
