@@ -22,7 +22,7 @@
 - [ ] **Graph BFS:** Number of Islands (https://leetcode.com/problems/number-of-islands/)
 - [X] **Tree BFS:**Binary Tree Level Order Traversal (https://leetcode.com/problems/binary-tree-level-order-traversal/)
 - [X] **Tree DFS:** Path Sum II (https://leetcode.com/problems/path-sum-ii)
-- [ ] **Dynamic Programming:** House Robber (https://leetcode.com/problems/house-robber/)\
+- [X] **Dynamic Programming:** House Robber (https://leetcode.com/problems/house-robber/)\
 - [ ] **Backtracking:** Subsets (https://leetcode.com/problems/subsets/)
 
 # DAY 2 - Full 12 pattern Coverage

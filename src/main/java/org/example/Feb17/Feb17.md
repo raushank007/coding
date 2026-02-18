@@ -141,3 +141,90 @@ private int tabulation(int[] nums, int n){
     return dp[n-1];
 }
 ```
+
+### Problem 3 : Subsets (https://leetcode.com/problems/subsets/)
+
+>Rephrase problem
+
+Given an integer array nums of unique elemets<br>
+return all possible subsets and subsets should not be dublicate and it can be of any order
+
+> Examples 
+
+```text
+Input : nums = [1,2,3]
+Output:
+[]
+[1]
+[1,2]
+[1,2,3]
+[2]
+[2,3]
+[3]
+```
+
+> Data structure
+
+Array
+
+>Pattern Recognition
+
+All possible combination -> Recursion
+
+>Brute force 
+
+1. index 
+2. all possible operation on string
+    ans.add(num[index]) //take
+    f(index-1);
+    f(index-1);
+    ans.remove(ans.size()-1) // remove last element
+3. base case : return when all the index>=n
+
+>DRY RUN
+
+### pseudo code
+
+```java
+   private void backtrack(int index, int[] nums, List<Integer> ans, List<List<Integer>> result){
+    if(index==nums.length){
+        result.add(new ArrayList<>(ans));
+        return;
+    }
+    
+    ans.add(nums[index]);
+    backtrack(index+1,nums,ans,result);
+    ans.remove(ans.size()-1);
+    backtrack(index+1,nums,ans,result);
+}
+```
+
+```text
+f(0) called (val:1) ans=[]
+|__ Include 1 : ans :[1] -> call f(1)
+|   |__ f(1) called (val:2)
+|       |__ Include 2 : ans [1,2] -> call f(2)
+|           |__ f(2) called (val:3)
+|               |__ Include 3 : ans [1,2,3] -> call f(3)
+|                   |__ f(3) called ->Base case -> Result :[[1,2,3]]
+|               |__ Exclude 3 : ans [1,2] -> call f(3)
+|                   |__ f(3) called -> Base case -> Result :[[1,2,3],[1,2]]
+|      |__ Exclude 2: ans:[1] -> cal f(2)
+|                   |__ f(2) called (val:3)
+|                         |__ Include 3 : ans:[1,3] -> call f(3)
+|                             |__ f(3) called -> Base case -> Result :[[1,2,3],[1,2],[1,3]]
+|                         |__ Exclude 3 : ans :[1] -> call f(3)
+|                             |__ f(3) called -> Base case -> Result :[[1,2,3],[1,2],[1,3],[1]]
+|__ Exclude 1 : ans;[] -> call f(1)
+   |__ f(1) called (val:2)
+        |__ Include 2 : ans [2] -> call f(2)
+            |__ f(2) called (val:3)
+                   |__ Include 3 : ans :[2,3] -> called f(3)
+                       |__ f(3) called -> base case -> Result :[[1,2,3],[1,2],[1,3],[1],[2,3]]
+                   |__ Exclude 3 : ans [2] -> called f(3)
+                       |__ f(3) called -> base case -> Result : [[1,2,3],[1,2],[1,3],[1],[2,3],[3]]
+       |__ Exclude 2 : ans [] -> call f(3)
+           |__ f(3) called -> base case -> Result : [[1,2,3],[1,2],[1,3],[1],[2,3],[2],[3],[]]                          
+                                                                                                                                                             
+```
+
