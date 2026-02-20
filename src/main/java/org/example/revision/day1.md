@@ -335,3 +335,69 @@ Ans : 3
 > O(n) 
 ### space complexity
 > O(n)
+
+
+## Problem 3 : **Fast-slow:** Middle of linked list (https://leetcode.com/problems/middle-of-the-linked-list/)
+
+### Rephrase problem
+head is given of LL, find the middle node
+2 middle nodes -> second one
+### Data structure
+Class Node for LinkedList
+### Pattern recognition
+fast and slow pointer 
+### Brute Force
+```text
+1. find the length
+2. return the n/2 node
+
+1->2->3->4->5 , Length =5
+n/2 -> node = 5/2 = 2  -> return node.next -> node 3 
+
+1->2->3->4->5->6 . Length = 6
+n/2 -> 3 -> return node.next => node 4
+
+Time complexity -> o(n) + o(n/2) -> O(n) 
+space complexity -> O(1) 
+```
+```java
+class Solution{
+    public ListNode middleNode(ListNode head){
+        int length = evaluate(head);
+        
+        int k = n/2;
+        while(k!=0){
+            head= head.next;
+            k--;
+        }
+        return head;
+    }
+    private int evaluate(ListNode head){
+        int l=0;
+        while(head!=null){
+            head=head.next;
+            l++;
+        }
+        return l;
+    }
+}
+```
+### DRY RUN BRUTE FORCE
+
+```text
+example -> 1->2->3->4
+
+|__ called evaluate(head, val:1)
+|   |__ l=0 , loop (head!=null), head = 1
+|   |__ l=1 , head =2 , head!=null
+|   |__ l=2 , head =3 , head!=null
+|   |__ l=3, head =4 , head!=null
+|   |__ l=4, head=null end loop
+|__ k = 2
+|__ loop -> k=2 ,K!=0 , head =1   
+|       |__ k=1, k1=0 , head =2
+|       |__ k=0  loop end
+|__ return head =3 
+
+```
+
