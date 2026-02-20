@@ -352,10 +352,10 @@ fast and slow pointer
 2. return the n/2 node
 
 1->2->3->4->5 , Length =5
-n/2 -> node = 5/2 = 2  -> return node.next -> node 3 
+n/2 -> node = 5/2 = 2  -> return node -> node 3 
 
 1->2->3->4->5->6 . Length = 6
-n/2 -> 3 -> return node.next => node 4
+n/2 -> 3 -> return node => node 4
 
 Time complexity -> o(n) + o(n/2) -> O(n) 
 space complexity -> O(1) 
