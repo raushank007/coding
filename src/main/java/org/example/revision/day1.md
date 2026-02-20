@@ -550,3 +550,172 @@ class Solution {
 O(n) 
 ### Space complexity
 O(n)
+
+
+## Problem 5 : **Monotonic Stack:** Next Greater Element (https://leetcode.com/problems/next-greater-element-i/)
+
+### Rephrase problem
+
+next greater element of some element `x` in an array is the first greater element that is to right of `x` in the same array.<br>
+find nums[1] -> find the position in nums2 [i to n-1] , find the next greater element.<br>
+
+### Data Structure 
+Array 
+
+### Pattern recognition
+Monotonic stack 
+
+### Brute Force 
+
+1. first find the nums1 element in nums2 in pos 
+2. then pos to last element in nums2 , find the first greater element 
+3. swap the nums1 element with that greater element
+
+```text
+nums1 =[4,2,1]
+nums2 = [1,3,4,2]
+
+|__ pick i=0 , nums1[0]=4 
+|   |__ find element in nums2 
+|       |__ pos = 2 
+|   |__ from loop [2,4]
+|       |__ pick i=3 , val = 2 
+|       |__ i==4 , end loop
+|   |__ nums1[0] = -1
+|__ pick i=1, nums1[1] = 1
+|   |__ find element in nums2
+|       |__ pos = 3
+|   |__ from loop nums2 [3,4]
+|       |__ pick i=4 , loop end
+|   |__ nums1[1] = -1
+|__ pick i=2 , nums1[2] = 2
+|   |__ find element in nums2
+|       |__ pos = 0
+|   |__ from loop [0,4]
+|       |__ pick j=2, nums2[2] = 3  target<nums2[2]
+|       |__ break;
+|   |__ nums2[2] = 3
+
+ans = [-1,-1,3]
+```
+
+```java
+class Solution{
+    public int[] nextGreaterElement(int[] nums1, int[] nums2){
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<nums2.length;i++){
+            map.put(nums2[i],i);
+        }
+        int[] ans = new int[nums1.length];
+        Arrays.fill(ans,-1);
+        for(int i=0;i<nums1.length;i++){
+            int pos = map.get(nums1[i]);
+            for(int j=pos+1; j<nums2.length;j++){
+                if(nums1[i]<nums2[j]){
+                    ans[i]=nums2[j];
+                    break;
+                }
+            }
+            
+        }
+        return ans;
+    }
+}
+```
+
+### Optimize it with pattern
+
+create a next greater array from nums2 , then find the position of nums1 eleement in nums2 and update the num1 element with nge element
+
+```text
+nums2 = [1,3,4,2]
+
+stack =[]
+
+|__ pick i=3 , val:2,  stack=[], nge=[]
+|   |__ stack is empty -> nge[3]  = -1
+|   |__ stack=[2]
+|__ pick i=2 , val:4 , stack=[2]
+|   |__ stack.top(2) > 4 -> No , nge[2] = -1
+|   |__ stack =[4,2]
+|__ pick i=1, val:3
+|   |__ stack.top(4) >3 -> Yes , nge[1] =4
+|   |__ stack =[3,4,2]
+|__ pick i=0 , val : 1
+|   |__ stack.top(3) > 1 => Yes , nge[0] =3
+
+nge=[3,4,-1,-1]
+
+
+```
+
+```java
+import java.util.Stack;
+
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums2.length; i++) {
+            map.put(nums2[i], i);
+        }
+
+        int[] nge = evaluate(nums2);
+
+        for (int i = 0; i < nums1.length; i++) {
+            int pos = map.get(nums1[i]);
+            nums1[i] = nge[pos];
+        }
+        return nums1;
+    }
+
+    private int[] evaluate(int[] num) {
+        Stack<Integer> st = new Stack<>();
+        int[] ans = new int[num.length];
+        
+        int n = nums.length;
+        
+        for(int i=n-1;i>=0;i--){
+            while(!st.isEmpty() && st.peek()<nums[i]){
+                st.pop();
+            }
+            if(st.isEmpty()) ans[i]=-1;
+            else ans[i] = st.peek();
+            st.push(num[i]);
+        }
+        return ans;
+    }
+}
+```
+```text
+num = [1,3,4,2]
+
+|__ pick i=3 , val : 2 , st=[], ans[]
+|   |__ while loop check -> not enter
+|   |__ st.isEmpty()? true -> ans[3] = -1
+|   |__ st=[2]
+|__ pick i=2, val: 4 , st[2], ans[0,0,0,-1]
+|   |__ while loop check !st.empty() ? true and 2 < 4 true , enter into loop
+|       |__ st.pop() -> remove top 2 
+|   |__ while loop check !st.empty()? false -> loop end
+|   |__ st.isEmpty() ? true -> ans[2] =[0,0,-1,-1]
+|   |__ st=[4]
+|__ pick i=1, val : 3 , st=[4], ans=[0,0,-1,-1]
+|   |__ while loop check !st.empty() ? true and 4<3 false, not enter
+|   |__ st.empty() ? false
+|   |__ ans[1] = 4
+|   |__ st=[3,4]
+|__ pick i=0, val: 1, st=[3,4] , ans = [0,4,-1,-1]
+    |__ while loop check !st.empty() ? true and 3<1 false, not enter 
+    |__ st.empty? false
+    |__ ans[0] = 3
+    |__ st=[1,3,4]
+
+ans = [3,4,-1,-1]    
+
+```
+
+
+
+
+
+
