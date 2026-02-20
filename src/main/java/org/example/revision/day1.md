@@ -401,3 +401,49 @@ example -> 1->2->3->4
 
 ```
 
+### Optimize code with pattern
+
+```text
+example : 1->2->3->4->null
+
+fast = head , 1
+slow = head , 1
+
+|__loop
+|   |__ slow -> slow.next = slow :2
+|   |__ fast -> fast.next.next = fast:3
+|   |__ slow -> slow.next = slow : 3
+|   |__ fast -> fast.next.next = null
+|__ fast.next.next = null , loop end 
+
+return slow = 3 
+
+example : 1->2->3->4->5->null
+
+|__ loop
+|   |__ slow -> slow.next = slow :2
+|   |__ fast -> fast.next.next = fast : 3
+|   |__ slow -> slow.next = slow : 3
+|   |__ fast -> fast.next.next = fast : 5
+|   |__ slow -> slow.next = slow : 4
+|   |__ fast -> fast.next=null 
+|__ loop end 
+
+ 
+```
+> observe that need to add the check point on fast!=null, fast.next!=null loop break
+
+```java
+class Solution{
+    public ListNode middle(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head;
+        
+        while(fast!=null && fast.next!=null ){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+}
+```
