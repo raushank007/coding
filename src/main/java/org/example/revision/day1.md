@@ -330,3 +330,8 @@ Ans : 3
 
 
 ```
+
+### Time complexity 
+> O(n) 
+### space complexity
+> O(n)
