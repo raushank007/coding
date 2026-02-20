@@ -118,4 +118,215 @@ num =[-1,0,1,2,0,-1,-4]
 ans=[-1,-1,2] , [-1,0,1]
 ```
 
+## **Sliding window:** Longest Substring without Repeating characters (https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
+### Rephrase problem
+
+longest substring that have unique characters
+```text
+example : "pwwkew"
+ans : 3 
+```
+
+### Data structure 
+String or array character
+
+### pattern Recognition
+
+work on substring -> may be sliding window
+
+### Brute Force 
+
+1. find all the substrings
+2. check the length of length od such substring 
+3. keep updating the maxLength.
+
+```text
+Example : "pwwkew"
+
+1. All possible substrings 
+pick - (0,1) -> p -> maxLength=1
+pick - (0,2) -> pw -> maxLength=2
+pick - (0,3) -> pww-> not 
+pick - (0,4) -> pwwk-> not
+pick - (0,5) -> pwwke -> not
+pick - (0,6) -> pwwkew -> not
+
+pick - (1,2) -> w -> maxLength=2
+pick - (1,3) -> ww -> no ,  maxLength=2
+pick - (1,4),(1,5),(1,6) -> no -> maxLength=2
+
+pick - (2,3) -> w 
+pick- (2,4) -> wk -> maxLength=2
+pick - (2,5) -> wke -> maxLength=3 
+pick - (2,6) -> wkew -> No, maxLength=3
+
+pick - (3,4) -> k
+pick - 3,5 -> ke
+pick - 3,6 -> kew
+
+pick - (4,5) -> e 
+pick - (4,6) -> ew
+
+pick -(5,6) -> w
+
+ans = maxLength=3
+```
+
+### time complexity 
+O(n^2)
+## space complexity
+O(1)
+
+### optimize it with sliding window
+
+```text
+example = "pwwkew"
+
+L=0, R =0 
+HashSet =[]
+
+pick : p 
+HashSet is Empty() -> it is P is unique
+set:[p]
+L=0, 
+
+pick :w
+set[p,w]
+L=0,
+
+pick : w
+set contains w 
+maxLength = R-L+1 = 2-1+1 = 2
+remove(L=0 character) set = [w]
+again remove (L=1, character) set=[]
+
+set=[w] , L =1 -> L=R
+
+pick : k
+set [ w, k ]
+
+pick =e 
+set [w,k,e] 
+
+pick =w 
+contains w 
+maxLenghth = R-L+1 = 5-3+1 =3
+
+```
+
+### pseudo code
+
+```text
+L=0, maxLength=0, set=[]
+for(R-> 0 to s.length())
+    if(set.contains(s.charAt(R)){
+        maxLength =max(maxLength, set.size());
+    }
+    while(!set.isEmpty() && set.contains(s.charAt(R) && L<=R){
+        set.remove(s.charAt(L));
+        L++;
+    }
+    if(set.isEmpty()) L=R;
+    
+    set.add(s.charAt(R));
+    max= maxLength(max, set.size())
+    
+    
+```
+
+### DRY RUN
+
+```text
+"pwwkew"
+
+L=0, maxLength=0, set=[]
+
+|__pick R=0 (val:p)
+|   |__ set.contains(p) ? false 
+|   |__set.contains(p) while? false
+|   |__ set.isEmpty() L =0;
+|   |__ set=[p]
+|__pick R=1 (val:w)
+|    |__ set.contains(w)? false
+|    |__set.contains(w) while? false
+|    |__ set isEmpty() false
+|    |__ set=[p,w]
+|__pick R=2 (val:w)
+|   |__ set.contains(w) ? true -> maxLength =2
+|   |__ set.contains(w) ? true 
+|       |__ remove(L=0, val:p) 
+|       |__ L++ = L=1 
+|   |__ set.contains(w)? true 
+|       |__ remove(L=1, val:w)
+|       |__ L++, L=2
+|   |__ set.contains(w) ? false-> 
+|   |__ set is Empty ? true -> L =2
+|   |__ set =[w]
+|__pick R=3 (val:k)
+    |__ set.contains(k) ? false
+    
+    
+```
+>Based on observation need to update the logic of pusdo code 
+> size calculation in the end
+> and add empty check as well in while loop
+
+```java
+class solution{
+    public int lengthOfLongestSubString(String s){
+        int L=0;
+        int maxLength=0;
+        HashSet<Character> set = new HashSet<>();
+        for(int R=0;R<s.length();R++){
+            while(!set.isEmpty() && set.contains(s.charAt(i)) && L<=R){
+                set.remove(s.charAt(L));
+                L++;
+            }
+            set.add(s.charAt(R));
+            maxLength = Math.max(maxLength,set.size());
+        }
+    }
+}
+```
+### DRY RUN
+
+```text
+pwwkew
+
+|__pick R=0 , val=p
+|   |__ not in while
+|   |__ set =[p]
+|   |__ maxLength = (0,1) -> 1
+|__pick R=1, val =w
+|   |__ not in while
+|   |__ set not empty 
+|   |__ set = [p,w]
+|   |__ maxLength = (1,2) -> 2
+|__pick R=2 , val =w
+|   |__ into while loop 
+|       |__ set = [w], L=1
+|   |__ into loop
+|       |__ set =[] , L =2
+|   |__ end of loop
+|   |__ set =[w]
+|   |__ maxLength = (2,1) -> 2
+|__ pick R=3 , val = k
+|   |__ not in while
+|   |__ set = [w,k]
+|   |__ maxLength = max(2,2) ->2
+|__ pick R=4 , val =e
+|   |__ not in while
+|   |_ set =[w,k,e]
+|   |__ maxLength = max(2,3) -> 3
+|__ pick R=5, val =w
+    |__ into while
+        |__ set -> remove -> L=2, val =w ,set=[k,e]
+    |__ loop end
+    |__ set=[k,e,w]
+    |__ maxLength =max(3,3) -> 3
+
+Ans : 3       
+
+
+```
