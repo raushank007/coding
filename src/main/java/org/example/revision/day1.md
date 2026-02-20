@@ -447,3 +447,106 @@ class Solution{
     }
 }
 ```
+## Problem 4 : **Perfix Sum:** Subarray Sum Equals K (https://leetcode.com/problems/subarray-sum-equals-k/)
+
+### Rephrase problem
+all possible subarray whose sum is K
+
+### Data structure 
+Array
+
+### Pattern recognition 
+Prefix sum
+
+### Brute force 
+
+1. all possible subarray 
+2. find the subarray whose sum =k 
+3. count such subarray 
+
+```text
+[1,2,3] , k=3
+
+[1]
+[1.2] - sum =3 
+[1,2,3]
+[2]
+[2.3]
+[3]  - sum =3
+
+ans = 2
+
+Time complexity : O(n^2) 
+```
+
+```java
+class Solution{
+    public int subarraySum(int[] nums, int k){
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            int sum=0;
+            for(int j=i;j<nums.length;j++){
+                sum += nums[j];
+                if(sum==k) count++;
+            }
+        }
+        return count;
+    }
+}
+```
+
+### Optimize it with pattern
+
+```text
+[1,2,3] , k = 3
+
+map=[(0,1)]
+
+|__ pick i=0, val :1
+|   |__ prefix= 1 
+|   |__ remove = prefix - 3 = -2
+|   |__ map.contains(-2) ? No
+|   |__ map =[(0,1),(1,1)]
+|__ pick i=1, val :2
+|   |__ prefix = 3 
+|   |__ remove = prefix -3 = 0
+|   |__ map.contains(0) ? true
+|       |__ count = 1
+|   |__ map = [(0,1),(1,1),(3,1)]
+|__ pick i=2, val =3
+    |__ prefix = 6
+    |__ remove = 6-3 =3
+    |__ map.contains(3) ? true
+    |__ count = 1+1=2
+    |__ map =[(0,1),(1,1),(3,1),(6,1)]
+    
+count =2 ANS
+
+    
+
+```
+
+```java
+
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0,1);
+        int count=0;
+        int prefixSum=0;
+        for(int i=0;i<nums.length;i++){
+            prefixSum += nums[i];
+            int temp = prefixSum-k;
+            if(map.containsKey(temp)){
+                count += map.get(temp);
+            }
+            map.put(prefixSum,map.getOrDefault(prefixSum,0)+1);
+        }
+        return count;
+    }
+}
+```
+### Time complexity
+O(n) 
+### Space complexity
+O(n)
