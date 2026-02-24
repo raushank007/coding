@@ -115,6 +115,21 @@
 - [ ] **Dynamic Programming:** Decode Ways (https://leetcode.com/problems/decode-ways/)
 - [ ] **Backtracking:** Letter Combinations of a phone number (https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
 
+# DAY-8
+
+- [ ] **Two Pointers:** Reverse Vowels (https://leetcode.com/problems/reverse-vowels-of-a-string/)
+- [ ] **Sliding window:** Binary subarrays with Sum (https://leetcode.com/problems/binary-subarrays-with-sum/)
+- [ ] **Fast-slow:** Sort List (https://leetcode.com/problems/sort-list/)
+- [ ] **Binary Search:** Peak Index in Mountain Array (https://leetcode.com/problems/peak-index-in-a-mountain-array/)
+- [ ] **Perfix Sum:** Sum of Subaaray Ranges (https://leetcode.com/problems/sum-of-subarray-range)
+- [ ] **Monotonic Stack:** Minimum add to Make parenthesis (https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/)
+- [ ] **HashMap:** Contains Duplicate II (https://leetcode.com/problems/contains-duplicate-ii/)
+- [ ] **Graph BFS:** Word Ladder (https://leetcode.com/problems/word-ladder/)
+- [ ] **Tree BFS:** Maximum Level Sum of a Binary Tree (https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/)
+- [ ] **Tree DFS:** Count Good Nodes in Binary Tree (https://leetcode.com/problems/count-good-nodes-in-binary-tree/)
+- [ ] **Dynamic Programming:** Decode Ways (https://leetcode.com/problems/decode-ways/)
+- [ ] **Backtracking:** Letter Combinations of a phone number (https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+
 
 
 
