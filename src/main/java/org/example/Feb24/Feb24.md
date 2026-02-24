@@ -166,3 +166,52 @@ class Solution{
 }
 ```
 
+# Problem 3 : **Fast-slow:** Linked List Cycle (https://leetcode.com/problems/linked-list-cycle/)
+
+## Rephrase problem
+find if the linked list have cycle in it or not
+
+## Data Structure 
+Linked List
+
+## Pattern recognition
+Fast and slow pointer 
+
+## Optimize solution 
+
+```java
+public class Solution{
+    public boolean hasCycle(ListNode head){
+         ListNode start = head;
+         ListNode fast = head;
+         while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow==fast) return true;  
+         }
+         return false;
+    }
+}
+```
+
+```text
+  3->2->0->-4-> 2
+  
+  slow=head
+  fast = head
+  
+  slow =slow.next (3->2(slow)->0-> -4 ->2)
+  fast = fast.next.next (3->2->0(fast) -> -4 -> 2)
+  
+  slow = slow.next (3->2->0(slow)->-4-> 2)
+  fast = fast.next.next( 3->2(fast)->0->-4)
+  
+  slow = slow.next (3->2->0->-4(slow))
+  fast = fast.next.next(3->2->0->-4(fast))
+  
+  slow==fast -> true
+  
+  intial value as false -> fast!=null && fast.next!=null while loop
+  
+  
+```
