@@ -93,3 +93,76 @@ max = 1
 
 ## Time complexity and Space complexity
  Time complexity = O(n) , space complexity = O(1)
+ 
+
+# Problem 2 : **Sliding window:** Minimum Window Substring (https://leetcode.com/problems/minimum-window-substring/)
+
+## Rephrase problem
+
+s -> length of m
+t -> length of n
+
+substring of s -> that every character of t should be part of substring
+return substring whose length minimum window substring
+
+## Data Structure
+Array 
+
+## Pattern Recognition
+Sliding window as it wants substring
+
+## Intuition 
+
+```text
+s ="ADOBECODEBANC" , t ="ABC"
+Output : "BANC"
+
+
+```
+
+## Brute force 
+1. find all possible substring 
+2. check in each substring all the characters are part of it
+3. find the minimum length of substring -> ans
+
+> O(n^2) to create all substrings and for every substring need to check all the characters are part of it or not
+
+MAP = [(A,1),(B,1),(C,1)]
+
+## Optimize 
+
+```text
+class Solution{
+    public String minWindow(String s, String t){
+        int[] map = new int[128];
+        int count = t.length();
+        int start=0;
+        int end=0;
+        int minLen = Integer.MAX_VALUE;
+        int startIndex=0;
+        
+        for(char c: t.toCharArray()) map[c]++;
+        
+        char[] chs = s.toCharArray();
+        
+        while(end<s.length()){
+            if(map[chs[end++]]-- >0){
+                count--;
+            }
+            
+            while(count==0){
+                if(end-start< minLen){
+                    startIndex = start;
+                    minLen = end-start;
+                }
+                
+                if(map[chs[start++]]++ == 0){
+                    count++;
+                }
+            }
+        }
+        return minLen = Integer.MAX_VALUE ? new String() : new String(chS,startIndex,minLen);
+    }
+}
+```
+
